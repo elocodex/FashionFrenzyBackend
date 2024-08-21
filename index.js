@@ -51,7 +51,7 @@ app.post("/upload", upload.single('product'),(req,res)=>{
     }
     res.json({
         success: 1,
-        imageUrl: `https://${req.headers.host}/images/${req.file.filename}`
+        imageUrl: req.file.location
     });
 })
 
