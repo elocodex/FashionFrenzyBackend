@@ -53,13 +53,12 @@ app.post("/upload", upload.single('product'),(req,res)=>{
         res.json({
             success: 1,
             imageUrl: req.file.location
-        });
+        })
     } catch (error) {
         console.error('Error uploading file:', error);
         res.status(500).json({ success: 0, message: 'Server error' });
     }
 });
-})
 
 // Creating User Schema for creating product in database
 const Product = mongoose.model("Product", {
