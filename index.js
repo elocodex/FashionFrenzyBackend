@@ -45,14 +45,20 @@ const upload = multer({storage:storage})
 // Creating Upload Enpoint for Image upload
 app.use('/images', express.static('upload/images'))
 app.post("/upload", upload.single('product'),(req,res)=>{
-    if (!req.file) {
-        console.log("Unfortunately, no file uploaded")
-        return res.status(400).send("No file uploaded.");
+    try {
+        if (!req.file) {
+            console.log("Unfortunately, no file uploaded")
+            return res.status(400).send("No file uploaded.");
+        }
+        res.json({
+            success: 1,
+            imageUrl: req.file.location
+        });
+    } catch (error) {
+        console.error('Error uploading file:', error);
+        res.status(500).json({ success: 0, message: 'Server error' });
     }
-    res.json({
-        success: 1,
-        imageUrl: req.file.location
-    });
+});
 })
 
 // Creating User Schema for creating product in database
