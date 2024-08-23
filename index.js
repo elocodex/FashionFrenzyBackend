@@ -36,7 +36,8 @@ const s3 = new S3Client({
 // Image storage engine
 const storage = multerS3({
     s3: s3,
-    bucket: process.env.AWS_BUCKET_NAME, // Set your S3 bucket name as an environment variable
+    bucket: process.env.AWS_BUCKET_NAME,
+    acl: 'public-read',
     metadata: (req, file, cb) => {
         cb(null, { fieldName: file.fieldname });
     },
