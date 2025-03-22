@@ -17,7 +17,8 @@ app.use(cors());
 app.use(parser.json())
 
 // Database Connection MOngoDb
-mongoose.connect("mongodb+srv://ielowinds:eloeloelo*3@jotter.1gzfc.mongodb.net/?retryWrites=true&w=majority&appName=Jotter)
+mongoose.connect("mongodb+srv://ielowinds:eloeloelo%2A3@jotter.1gzfc.mongodb.net/?retryWrites=true&w=majority&appName=Jotter");
+
 
 //Api Creation
 app.get("/",(req,res)=>{
